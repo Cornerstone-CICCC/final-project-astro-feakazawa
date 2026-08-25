@@ -1,3 +1,13 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import '../components/GlobalStyle.astro'
+import { getImage } from 'astro:assets';
+import bgImage from '../assets/bg-jewel.png';
+
+const optimizedBg = await getImage({ src: bgImage });
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,23 +21,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 </head>
 
-<body>
-<!-- <header>
-<nav>
-	<ul>
-		<li>Bracelets</li>
-		<li>Earrings</li>
-		<li>Necklaces</li>
-		<li>Ring</li>
-		<li>Watches</li>
-	</ul>
-</nav>
-</header> -->
-
+<body class="hero">
+    <Header />
     <slot />
+    <!-- <Footer /> -->
 
-<footer>
-
-</footer>
 </body>
 </html>
+
+<style define:vars={{ bgUrl: `url(${optimizedBg.src})` }}>
+  .hero {
+    background-image: var(--bgUrl);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    min-height: 400px;
+  }
+</style>
