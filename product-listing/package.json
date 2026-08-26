@@ -12,7 +12,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.2.6"
+    "@iconify-json/akar-icons": "^1.2.7",
+    "@iconify-json/ant-design": "^1.2.8",
+    "astro": "^7.2.6",
+    "astro-icon": "^1.2.0"
   },
   "allowScripts": {
     "esbuild": true
