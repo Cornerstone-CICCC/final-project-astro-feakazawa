@@ -1,27 +1,116 @@
 ---
 import BasicLayout from "../layouts/BasicLayout.astro";
+import homeImage from '../assets/bg-jewel.png'
+import Card from "../components/Card.astro";
+import CardExperience from "../components/CardExperience.astro";
+
+//images
+import bracelet from '../images/bracelet.png'
+import ring from '../images/rings.png'
+import necklace from '../images/necklace.png'
+import earrings from '../images/earrings.png'
+import watch from '../images/watch.png'
+import appointment from '../images/booking.png'
+import personalization from '../images/customization.png'
+import contact from '../images/contactus.png'
 
 ---
 
-<BasicLayout>
-<main>
-	<h1 class="marginT100">Timeless Beauty</h1>
+<BasicLayout title="Luceria | Home" bgImage={homeImage}>
+	<h1 class="marginT80">Timeless Beauty</h1>
 	<h1>Crafted to Last</h1>
 
-	<p>Fine jewerly designed to celebrate life's most meaningful moments</p>
-	<p>with elegance and craftsmanship.</p>
-</main>
+	<div slot="main-content">
+		<h2 class="h2-margin">Shop by Category</h2>
+
+		<div class="flex">
+			<Card
+				title="Bracelets"
+				imageSrc={bracelet}
+				imageAlt="Traditional gold bangles with intricate detailing"
+				link=""
+			/>
+
+			<Card
+				title="Earrings"
+				imageSrc={earrings}
+				imageAlt="Traditional gold bangles with intricate detailing"
+				link=""
+			/>
+
+			<Card
+				title="Necklaces"
+				imageSrc={necklace}
+				imageAlt="Traditional gold bangles with intricate detailing"
+				link=""
+			/>
+
+			<Card
+				title="Rings"
+				imageSrc={ring}
+				imageAlt="Traditional gold bangles with intricate detailing"
+				link=""
+			/>
+
+			<Card
+				title="Watches"
+				imageSrc={watch}
+				imageAlt="Traditional gold bangles with intricate detailing"
+				link=""
+			/>
+
+		</div>
+
+		<h2 class="h2-margin">The Liceria Experience</h2>
+
+		<div class="flex-exp">
+			<CardExperience
+				title="Book an Appointment"
+				imageSrc={appointment}
+				imageAlt="Traditional gold bangles with intricate detailing"
+				link="#"
+			/>
+
+			<CardExperience
+				title="Personalization"
+				imageSrc={personalization}
+				imageAlt="Traditional gold bangles with intricate detailing"
+				link="#"
+			/>
+
+			<CardExperience
+				title="Contact us"
+				imageSrc={contact}
+				imageAlt="Traditional gold bangles with intricate detailing"
+				link="#"
+			/>
+
+		</div>
+	</div>
 
 </BasicLayout>
 
 <style>
-	.marginT100 {
-		margin-top: 100px;
+	.marginT80 {
+		margin-top: 80px;
 	}
-
 	p {
-		color: #ffffff;
+		color: #FFFFFF;
 		margin-left: 3rem;
 	}
+	.flex {
+		display: flex;
+		justify-content: space-between;
+	}
 
+	.h2-margin {
+		margin: 5rem auto;
+		text-align: center;
+		font-size: 2.5rem;
+	}
+
+	.flex-exp {
+		display: flex;
+		justify-content: center;
+	}
 </style>
