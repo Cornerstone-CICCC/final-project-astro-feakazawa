@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+
+
+//images
+import img1 from '../assets/hoop-earrings0.avif'
+import img2 from '../assets/hoop-earrings1.avif'
+import img3 from '../assets/hoop-earrings2.avif'
+import img4 from '../assets/hoop-earrings3.avif'
+import img5 from '../assets/hoop-earrings4.avif'
+---
+
+<div class="grid-media">
+    <Image src={img1} alt='Gold hoop earrings with crystal' width={400} height={400} />
+    <Image src={img2} alt='Gold hoop earrings with crystal' width={400} height={400} />
+    <Image src={img3} alt='Gold hoop earrings with crystal' width={400} height={400} />
+    <Image src={img4} alt='Gold hoop earrings with crystal' width={400} height={400} />
+    <Image src={img5} alt='Gold hoop earrings with crystal' width={400} height={400} />
+
+</div>
+
+<style>
+    .grid-media {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+</style>
