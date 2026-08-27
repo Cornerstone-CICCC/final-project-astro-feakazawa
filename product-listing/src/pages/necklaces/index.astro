@@ -1,0 +1,57 @@
+---
+import BasicLayout from "../../layouts/BasicLayout.astro";
+import CardPrice  from "../../components/CardPrice.astro";
+import {ProductCatalog} from '../../models/productCatalog'
+import bgNecklaces from '../../assets/bg-necklace.png'
+
+const catalog = new ProductCatalog()
+const targetProducts = catalog.getProductsByCategory('necklaces')
+
+---
+
+<BasicLayout title="Luceria | Earrings", bgImage={bgNecklaces}>
+    <h1>Necklaces</h1>
+    
+    <div slot="main-content">
+        <div class="margin-grid">
+            <div class="grid2col">
+                <p>Find your new everyday favourite with our collection of necklaces. From delicate and fine chains to options with brilliant diamonds, there's a design for every look and personality.</p>
+            </div>
+        </div>
+
+        <div class="flex">
+            {targetProducts.map((product) => (
+                <CardPrice 
+                    link={`/${product.category}/${product.slug}`}
+                    imageSrc={product.image}
+                    imageAlt={product.title}
+                    title={product.title}
+                    description={product.description}
+                    price={`CAD ${product.price}`}
+                />
+            
+            ))}
+        </div>
+    </div>
+</BasicLayout>
+
+<style>
+    .margin-grid {
+        margin: 5rem 10rem
+    }
+
+    .grid2col {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid2col p {
+        font-size: 1.5rem;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+</style>
