@@ -12,14 +12,6 @@ export class ProductCatalog {
     return this.catalog;
   }
 
-  getProductsBySlug(slug: string) {
-    for (let product of this.catalog) {
-      if (product.slug === slug) {
-        return product;
-      }
-    }
-  }
-
   getProductsByCategory(category: string): Product[] {
     let selectedCategories = [];
 
@@ -30,27 +22,5 @@ export class ProductCatalog {
     }
 
     return selectedCategories;
-  }
-
-  getProductsLessOrEqualThanValue(value: number): Product[] {
-    let selectedProducts = [];
-
-    for (let product of this.catalog) {
-      if (product.price <= value) {
-        selectedProducts.push(product);
-      }
-    }
-    return selectedProducts;
-  }
-
-  getProductsGreaterThanValue(value: number): Product[] {
-    let selectedProducts = [];
-
-    for (let product of this.catalog) {
-      if (product.price > value) {
-        selectedProducts.push(product);
-      }
-    }
-    return selectedProducts;
   }
 }
