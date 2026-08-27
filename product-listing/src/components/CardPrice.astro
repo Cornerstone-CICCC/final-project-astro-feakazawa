@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  imageSrc: string; 
+  imageAlt: string;
+  link: string;
+  description: string
+  price: string
+}
+
+const { title, imageSrc, imageAlt, link, description, price } = Astro.props;
+
+---
+
+<div class="card">
+    <a href={link}>
+    <img src={imageSrc} alt={imageAlt} />    
+    </a>
+  
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <p class="font-size2">{price}</p>
+</div>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  img {
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .font-size2 {
+    font-size: 1.2rem;
+  }
+
+</style>
