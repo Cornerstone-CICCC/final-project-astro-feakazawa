@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+
+
+//images
+import img1 from '../assets/luxury-watch0.avif'
+import img2 from '../assets/luxury-watch1.avif'
+import img3 from '../assets/luxury-watch2.avif'
+import img4 from '../assets/luxury-watch3.avif'
+import img5 from '../assets/luxury-watch4.avif'
+---
+
+<div class="grid-media">
+    <Image src={img1} alt='luxury watch with leather strap' width={400} height={400} />
+    <Image src={img2} alt='luxury watch with leather strap' width={400} height={400} />
+    <Image src={img3} alt='luxury watch with leather strap' width={400} height={400} />
+    <Image src={img4} alt='luxury watch with leather strap' width={400} height={400} />
+    <Image src={img5} alt='luxury watch with leather strap' width={400} height={400} />
+
+</div>
+
+<style>
+    .grid-media {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+</style>

@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+
+
+//images
+import img1 from '../assets/minimalist-watch0.avif'
+import img2 from '../assets/minimalist-watch1.avif'
+import img3 from '../assets/minimalist-watch3.avif'
+import img4 from '../assets/minimalist-watch4.avif'
+import img5 from '../assets/minimalist-watch5.avif'
+import img6 from '../assets/minimalist-watch6.avif'
+import video from '../assets/minimalist-watch2.webm'
+---
+
+<div class="grid-media">
+    <Image src={img1} alt='silver minimalist watch' width={400} height={400} />
+    <Image src={img2} alt='silver minimalist watch' width={400} height={400} />
+    <video controls autoplay muted loop playsinline width="100%">
+        <source src={video} type="video/webm" />
+    </video>
+    <Image src={img3} alt='silver minimalist watch' width={400} height={400} />
+    <Image src={img4} alt='silver minimalist watch' width={400} height={400} />
+    <Image src={img5} alt='silver minimalist watch' width={400} height={400} />
+
+</div>
+
+<style>
+    .grid-media {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+</style>
