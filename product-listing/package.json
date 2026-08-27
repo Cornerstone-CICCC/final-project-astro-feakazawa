@@ -14,6 +14,8 @@
   "dependencies": {
     "@iconify-json/akar-icons": "^1.2.7",
     "@iconify-json/ant-design": "^1.2.8",
+    "@iconify-json/basil": "^1.2.4",
+    "@iconify-json/hugeicons": "^1.2.33",
     "astro": "^7.2.6",
     "astro-icon": "^1.2.0"
   },
