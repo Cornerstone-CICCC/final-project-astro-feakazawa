@@ -6,20 +6,22 @@ interface Props {
   link: string;
   description: string
   price: string
+  priceValue: number
+  category: string
 }
 
-const { title, imageSrc, imageAlt, link, description, price } = Astro.props;
+const { title, imageSrc, imageAlt, link, description, price, priceValue, category } = Astro.props;
 
 ---
 
-<div class="card">
+<div class="card" data-price={priceValue} data-category={category}>
     <a href={link}>
     <img src={imageSrc} alt={imageAlt} />    
     </a>
   
-  <h3>{title}</h3>
-  <p>{description}</p>
-  <p class="font-size2">{price}</p>
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <p class="font-size2">{price}</p>
 </div>
 
 <style>
@@ -28,7 +30,9 @@ const { title, imageSrc, imageAlt, link, description, price } = Astro.props;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 25rem;
+    text-align: center;
+    width: 100%;
+    margin: 1rem 0;
   }
 
   p {
