@@ -53,16 +53,4 @@ export class ProductCatalog {
     }
     return selectedProducts;
   }
-
-  getImagePathByCategory(category: string): string[] {
-    let selectedImages = [];
-
-    for (let product of this.catalog) {
-      if (product.category === category) {
-        selectedImages.push(product.image);
-      }
-    }
-
-    return selectedImages;
-  }
 }
