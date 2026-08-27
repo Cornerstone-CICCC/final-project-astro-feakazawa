@@ -1,0 +1,68 @@
+---
+import BasicLayout from "../../layouts/BasicLayout.astro";
+import CardPrice  from "../../components/CardPrice.astro";
+import {ProductCatalog} from '../../models/productCatalog'
+import bgJewell from '../../assets/bg-jewellery.png'
+import SortButton from "../../components/SortButton.astro";
+
+const catalog = new ProductCatalog()
+const necklaces = catalog.getProductsByCategory('necklaces')
+const rings = catalog.getProductsByCategory('rings')
+const earrings = catalog.getProductsByCategory('earrings')
+const jewellery = [... necklaces, ...rings, ...earrings]
+
+---
+
+<BasicLayout title="Luceria | Jewellery", bgImage={bgJewell}>
+    <h1>Jewellery</h1>
+    
+    <div slot="main-content">
+        <div class="margin-grid">
+            <div class="grid2col">
+                <div>
+                    <h2>Jewellery: Earrings, Bracelets, Necklaces and Rings</h2>
+                    <p class="marginT1">Looking for wear-forever fashion jewellery? You've come to the right place. Expect necklaces, earrings, rings, and everything in-between with exquisite design details that make a statement, day or night</p> 
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="bg-blue">
+            <SortButton />
+        </div>
+    </div>
+</BasicLayout>
+
+<style>
+    .margin-grid {
+        margin: 5rem 10rem
+    }
+
+    .grid2col {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid2col h2 {
+        font-size: 1.8rem;
+    }
+
+    .grid2col p {
+        font-size: 1.2rem;
+    }
+
+    .grid3col {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .marginT1 {
+        margin-top: 1rem;
+    }
+
+    .bg-blue {
+        background-color: #eae0d5;
+    }
+</style>
