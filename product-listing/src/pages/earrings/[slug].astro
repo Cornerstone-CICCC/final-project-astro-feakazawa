@@ -1,0 +1,104 @@
+---
+import BasicLayout from '../../layouts/BasicLayout.astro';
+import headerImg from '../../assets/bg-header.png'
+import {ProductCatalog} from '../../models/productCatalog'
+import GridStudEarring from '../../components/GridStudEarring.astro';
+import GridHoopEarring from '../../components/GridHoopEarring.astro';
+
+export function getStaticPaths() {
+    const catalog = new ProductCatalog()
+    const targetProducts = catalog.getProductsByCategory('earrings')
+    
+    return targetProducts.map((product) => ({
+        params: { slug: product.slug },
+        props: { product },
+    }));
+}
+
+const { product } = Astro.props;
+const availability = product.inStock ? 'In stock' : 'Sold out'
+const availlabilityClass = product.inStock ? 'in-stock' : 'sold-out'
+
+const LayoutComponent = product.slug === 'stud-earrings' ? GridStudEarring : GridHoopEarring
+---
+
+<BasicLayout bgImage={headerImg}>
+    <div slot="main-content">
+        <div class="grid2col">
+            
+        <LayoutComponent />    
+
+        <div>
+            <h2 class="marginT5 font2">{product.title}</h2>
+            <p class="margin05 font12">{product.description}</p>
+            <p class="margin1 font15">{`CAD ${product.price}`}</p>
+            <p class={availlabilityClass}>{availability}</p>
+
+            <button class="btn-bag marginT5">Add to bag</button>
+        </div>
+    </div>
+    </div>
+    
+</BasicLayout>
+
+<style>
+    .grid2col {
+        display: grid;
+        grid-template-columns: 0.6fr 0.3fr;
+    }
+
+    .grid-item img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 8rem;
+  }
+
+    .margin05 {
+        margin: 0.5rem 0;
+    }
+
+    .margin1 {
+        margin: 1rem 0 0
+    }
+
+    .marginT5 {
+        margin-top: 5rem;
+    }
+
+    .font15 {
+        font-size: 1.5rem;
+    }
+
+    .font2 {
+        font-size: 2rem;
+    }
+
+    .font12 {
+        font-size: 1.2rem;
+    }
+
+    .in-stock {
+        color: #028090
+    }
+
+    .sold-out {
+        color: #e9190f;
+    }
+
+    .btn-bag {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 0.6rem 1.2rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
+        height: 4rem;
+        font-size: 1.2rem;
+  }
+
+  .btn-bag:hover {
+        background-color: #284b63;
+  }
+</style>
