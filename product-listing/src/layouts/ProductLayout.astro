@@ -1,0 +1,54 @@
+---
+import BasicLayout from '../layouts/BasicLayout.astro'
+import Sort from "../components/Sort.astro";
+
+interface Props {
+    bgCategory: ImageMetadata
+    pageTitle: string
+    headerTitle: string
+    category: string
+}
+
+const {bgCategory, pageTitle, headerTitle, category} = Astro.props
+---
+
+<BasicLayout title={pageTitle}, bgImage={bgCategory}>
+    <h1>{headerTitle}</h1>
+    
+    <div slot="main-content">
+        <div class="margin-grid">
+            <div class="grid2col">
+                <slot />
+            </div>
+        </div>
+
+        <div class="bg-cream">
+            <Sort category={category}/>
+        </div>
+    </div>
+</BasicLayout>
+
+<style>
+    .margin-grid {
+        margin: 5rem 10rem
+    }
+
+    .grid2col {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid2col p {
+        font-size: 1.2rem;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .bg-cream {
+        background-color: #eae0d5;
+    }
+</style>
