@@ -22,7 +22,7 @@ const {bgCategory, pageTitle, headerTitle, category} = Astro.props
             </div>
         </div>
 
-        <div class="bg-cream">
+        <div class="bg-cream marginB5">
             <Sort category={category}/>
         </div>
     </div>
@@ -31,6 +31,10 @@ const {bgCategory, pageTitle, headerTitle, category} = Astro.props
 <style>
     .margin-grid {
         margin: 5rem 10rem
+    }
+
+    .marginB5 {
+        padding-bottom: 5rem;
     }
 
     .grid2col {
