@@ -47,7 +47,7 @@ const jewellery = [... necklaces, ...rings, ...earrings, ...bracelets]
 </div>
 
 
-<div id="cardContainer" class="grid3col">
+<div id="cardContainer" class="grid3col paddingB5">
     {jewellery.map((product) => (
         <CardPrice
             link={`/${product.category}/${product.slug}`}
@@ -99,6 +99,10 @@ const jewellery = [... necklaces, ...rings, ...earrings, ...bracelets]
 
     .marginT1 {
         margin-top: 1rem;
+    }
+
+    .paddingB5 {
+        padding-bottom: 5rem;
     }
 
 

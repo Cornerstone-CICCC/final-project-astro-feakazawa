@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div class="bg-nav">
+<nav class="bg-nav">
     <div class="flex">
         
         <h2>Liceria & Co</h2>
@@ -24,16 +24,12 @@ import { Icon } from "astro-icon/components";
         <a href="/rings"><strong>Rings</strong></a>
         <a href="/watches"><strong>Watches</strong></a>
     </div>
-</div>
-
-
-
-
-
+</nav>
 
 <style>
     .bg-nav {
         padding: 2rem;
+        transition: background-color 1s ease-in-out;
     }
 
     div a {
@@ -41,6 +37,7 @@ import { Icon } from "astro-icon/components";
         font-size: 1.3rem;
         color: #f4f9e9
     }
+
     .bg-nav:hover{
         background-color: #e7ecef;
     }
@@ -49,7 +46,7 @@ import { Icon } from "astro-icon/components";
         color: #000000;
     }
 
-      .bg-nav:hover h2 {
+    .bg-nav:hover h2 {
         color: #000000;
     }
 
@@ -76,6 +73,5 @@ import { Icon } from "astro-icon/components";
         display: flex;
         justify-content: space-evenly;
         margin-top: 20px;
-      
     }
 </style>

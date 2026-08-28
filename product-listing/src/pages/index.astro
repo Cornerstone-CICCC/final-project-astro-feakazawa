@@ -10,8 +10,11 @@ import necklace from '../assets/necklace.png'
 import earrings from '../assets/earrings.png'
 import watch from '../assets/watch.png'
 import appointment from '../assets/booking.png'
+import appointmentHover from '../assets/appointment-hover.png'
 import personalization from '../assets/customization.png'
+import personalizationHover from '../assets/custom-hover1.png'
 import contact from '../assets/contactus.png'
+import contactHover from '../assets/contact-hover.png'
 
 ---
 
@@ -20,71 +23,75 @@ import contact from '../assets/contactus.png'
 	<h1>Crafted to Last</h1>
 
 	<div slot="main-content">
-		<h2 class="h2-margin">Shop by Category</h2>
+		<section>
+			<h2 class="h2-margin">Shop by Category</h2>
 
-		<div class="flex">
-			<Card
-				title="Bracelets"
-				imageSrc={bracelet}
-				imageAlt="Traditional gold bangles with intricate detailing"
-				link="/bracelets"
-			/>
+			<div class="flex">
+				<Card
+					title="Bracelets"
+					imageSrc={bracelet}
+					imageAlt="Traditional gold bangles with intricate detailing"
+					link="/bracelets"
+				/>
 
-			<Card
-				title="Earrings"
-				imageSrc={earrings}
-				imageAlt=""
-				link="/earrings"
-			/>
+				<Card
+					title="Earrings"
+					imageSrc={earrings}
+					imageAlt=""
+					link="/earrings"
+				/>
 
-			<Card
-				title="Necklaces"
-				imageSrc={necklace}
-				imageAlt="Traditional gold bangles with intricate detailing"
-				link="/necklaces"
-			/>
+				<Card
+					title="Necklaces"
+					imageSrc={necklace}
+					imageAlt="Traditional gold bangles with intricate detailing"
+					link="/necklaces"
+				/>
 
-			<Card
-				title="Rings"
-				imageSrc={ring}
-				imageAlt="Traditional gold bangles with intricate detailing"
-				link="/rings"
-			/>
+				<Card
+					title="Rings"
+					imageSrc={ring}
+					imageAlt="Traditional gold bangles with intricate detailing"
+					link="/rings"
+				/>
 
-			<Card
-				title="Watches"
-				imageSrc={watch}
-				imageAlt="Traditional gold bangles with intricate detailing"
-				link="/watches"
-			/>
+				<Card
+					title="Watches"
+					imageSrc={watch}
+					imageAlt="Traditional gold bangles with intricate detailing"
+					link="/watches"
+				/>
+			</div>
+		</section>
+		
+		<section>
+			<h2 class="h2-margin">The Liceria Experience</h2>
+				<div class="flex-exp marginB5">
+				<CardExperience
+					title="Book an Appointment"
+					imageSrc={appointment}
+					imageHover={appointmentHover}
+					imageAlt="Traditional gold bangles with intricate detailing"
+					link="#"
+				/>
 
-		</div>
+				<CardExperience
+					title="Personalization"
+					imageSrc={personalization}
+					imageHover={personalizationHover}
+					imageAlt="Traditional gold bangles with intricate detailing"
+					link="#"
+				/>
 
-		<h2 class="h2-margin">The Liceria Experience</h2>
-
-		<div class="flex-exp">
-			<CardExperience
-				title="Book an Appointment"
-				imageSrc={appointment}
-				imageAlt="Traditional gold bangles with intricate detailing"
-				link="#"
-			/>
-
-			<CardExperience
-				title="Personalization"
-				imageSrc={personalization}
-				imageAlt="Traditional gold bangles with intricate detailing"
-				link="#"
-			/>
-
-			<CardExperience
-				title="Contact us"
-				imageSrc={contact}
-				imageAlt="Traditional gold bangles with intricate detailing"
-				link="#"
-			/>
-
-		</div>
+				<CardExperience
+					title="Contact us"
+					imageSrc={contact}
+					imageHover={contactHover}
+					imageAlt="Traditional gold bangles with intricate detailing"
+					link="#"
+				/>
+			</div>
+		</section>
 	</div>
 
 </HomeLayout>
@@ -111,5 +118,9 @@ import contact from '../assets/contactus.png'
 	.flex-exp {
 		display: flex;
 		justify-content: center;
+	}
+
+	.marginB5 {
+		margin-bottom: 5rem;
 	}
 </style>

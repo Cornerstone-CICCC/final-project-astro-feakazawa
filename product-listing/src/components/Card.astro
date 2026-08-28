@@ -24,10 +24,14 @@ const { title, imageSrc, imageAlt, link } = Astro.props;
     justify-content: center;
     align-items: center;
     width: 20rem;
+    transition: all 0.5s ease;
   }
 
-  h3 {
-    color: #124559;
+  .card:hover {
+    width: 25rem;
+    color: #62929e
   }
+
+
 
 </style>
