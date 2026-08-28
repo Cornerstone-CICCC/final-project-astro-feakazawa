@@ -1,15 +1,7 @@
 ---
 import BasicLayout from "../../layouts/BasicLayout.astro";
-import CardPrice  from "../../components/CardPrice.astro";
-import {ProductCatalog} from '../../models/productCatalog'
 import bgJewell from '../../assets/bg-jewellery.png'
-import SortButton from "../../components/SortButton.astro";
-
-const catalog = new ProductCatalog()
-const necklaces = catalog.getProductsByCategory('necklaces')
-const rings = catalog.getProductsByCategory('rings')
-const earrings = catalog.getProductsByCategory('earrings')
-const jewellery = [... necklaces, ...rings, ...earrings]
+import SortAndFilterButton from "../../components/SortAndFilterButton.astro";
 
 ---
 
@@ -27,8 +19,8 @@ const jewellery = [... necklaces, ...rings, ...earrings]
             </div>
         </div>
         
-        <div class="bg-blue">
-            <SortButton />
+        <div class="bg-cream">
+            <SortAndFilterButton/>
         </div>
     </div>
 </BasicLayout>
@@ -62,7 +54,7 @@ const jewellery = [... necklaces, ...rings, ...earrings]
         margin-top: 1rem;
     }
 
-    .bg-blue {
+    .bg-cream {
         background-color: #eae0d5;
     }
 </style>

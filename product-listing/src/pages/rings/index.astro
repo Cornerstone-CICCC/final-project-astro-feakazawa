@@ -1,57 +1,15 @@
 ---
-import BasicLayout from "../../layouts/BasicLayout.astro";
-import CardPrice  from "../../components/CardPrice.astro";
-import {ProductCatalog} from '../../models/productCatalog'
-import bgRings from '../../assets/bg-ring.png'
-
-const catalog = new ProductCatalog()
-const targetProducts = catalog.getProductsByCategory('rings')
+import ProductLayout from '../../layouts/ProductLayout.astro'
+import bgRing from '../../assets/bg-ring.png'
 
 ---
 
-<BasicLayout title="Luceria | Rings", bgImage={bgRings}>
-    <h1>Rings</h1>
-    
-    <div slot="main-content">
-        <div class="margin-grid">
-            <div class="grid2col">
-                <p></p>
-            </div>
-        </div>
-
-        <div class="flex">
-            {targetProducts.map((product) => (
-                <CardPrice 
-                    link={`/${product.category}/${product.slug}`}
-                    imageSrc={product.image}
-                    imageAlt={product.title}
-                    title={product.title}
-                    description={product.description}
-                    price={`CAD ${product.price}`}
-                />
-            
-            ))}
-        </div>
-    </div>
-</BasicLayout>
+<ProductLayout bgCategory={bgRing} pageTitle='Luceria | Rings' headerTitle='Rings' category='rings'>
+    <p>Find your new everyday favourite in our captivating range of rings. Discover an array of styles, from classic silver-tone plated and gold-tone plated rings for understated elegance to dazzling rings with radiant cuts for special occasions.</p>
+</ProductLayout>
 
 <style>
-    .margin-grid {
-        margin: 5rem 10rem
-    }
-
-    .grid2col {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .grid2col p {
-        font-size: 1.5rem;
-    }
-
-    .flex {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
+    p {
+        font-size: 1.3rem;
     }
 </style>

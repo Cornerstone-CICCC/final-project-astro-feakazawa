@@ -1,57 +1,15 @@
 ---
-import BasicLayout from "../../layouts/BasicLayout.astro";
-import CardPrice  from "../../components/CardPrice.astro";
-import {ProductCatalog} from '../../models/productCatalog'
+import ProductLayout from '../../layouts/ProductLayout.astro'
 import bgBracelet from '../../assets/bg-bracelet.png'
-
-const catalog = new ProductCatalog()
-const targetProducts = catalog.getProductsByCategory('bracelets')
 
 ---
 
-<BasicLayout title="Luceria | Bracelets", bgImage={bgBracelet}>
-    <h1>Bracelets</h1>
-    
-    <div slot="main-content">
-        <div class="margin-grid">
-            <div class="grid2col">
-                <p>Make a statement with our range of bracelets, which features modern styles and vibrant colours.</p>
-            </div>
-        </div>
-
-        <div class="flex">
-            {targetProducts.map((product) => (
-                <CardPrice 
-                    link={`/${product.category}/${product.slug}`}
-                    imageSrc={product.image}
-                    imageAlt={product.title}
-                    title={product.title}
-                    description={product.description}
-                    price={`CAD ${product.price}`}
-                />
-            
-            ))}
-        </div>
-    </div>
-</BasicLayout>
+<ProductLayout bgCategory={bgBracelet} pageTitle='Luceria | Bracelets' headerTitle='Bracelets' category='bracelets'>
+    <p>Make a statement with our range of bracelets, which features modern styles and vibrant colours.</p>
+</ProductLayout>
 
 <style>
-    .margin-grid {
-        margin: 5rem 10rem
-    }
-
-    .grid2col {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .grid2col p {
-        font-size: 1.5rem;
-    }
-
-    .flex {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
+    p {
+        font-size: 1.3rem;
     }
 </style>
