@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+
+
+//images
+import img1 from '../assets/diamond-ring0.avif'
+import img2 from '../assets/diamond-ring1.avif'
+import img3 from '../assets/diamond-ring2.avif'
+import img4 from '../assets/diamond-ring3.avif'
+import img5 from '../assets/diamond-ring4.avif'
+---
+
+<div class="grid-media">
+    <Image src={img1} alt='gold ring with diamonds' width={400} height={400} />
+    <Image src={img2} alt='gold ring with diamonds' width={400} height={400} />
+    <Image src={img3} alt='gold ring with diamonds' width={400} height={400} />
+    <Image src={img4} alt='gold ring with diamonds' width={400} height={400} />
+    <Image src={img5} alt='gold ring with diamonds' width={400} height={400} />
+
+</div>
+
+<style>
+    .grid-media {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px
+    }
+</style>

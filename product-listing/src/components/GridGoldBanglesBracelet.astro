@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+
+
+//images and video
+import img1 from '../assets/gold-bangles0.jpg'
+import img2 from '../assets/gold-bangles1.jpg'
+import img3 from '../assets/gold-bangles2.jpg'
+import img4 from '../assets/gold-bangles3.jpg'
+import img5 from '../assets/gold-bangles4.jpg'
+import video from '../assets/gold-bangles5.webm'
+
+---
+
+<div class="grid-media">
+    <Image src={img2} alt='gold bracelet with Swarovski Zirconia' width={400} height={400} />
+    <Image src={img1} alt='gold bracelet with Swarovski Zirconia' width={400} height={400} />
+    <video controls autoplay muted loop playsinline width="100%">
+        <source src={video} type="video/webm" />
+    </video>
+    <Image src={img3} alt='gold bracelet with Swarovski Zirconia' width={400} height={400} />
+    <Image src={img4} alt='gold bracelet with Swarovski Zirconia' width={400} height={400} />
+    <Image src={img5} alt='gold bracelet with Swarovski Zirconia' width={400} height={400} />
+
+</div>
+
+<style>
+    .grid-media {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px
+    }
+</style>

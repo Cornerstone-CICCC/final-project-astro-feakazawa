@@ -1,0 +1,50 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import '../components/GlobalStyle.astro'
+import { getImage } from 'astro:assets';
+import homeImage from '../assets/bg-jewel.png'
+
+const title = 'Liceria | Home'
+const optimizedBg = await getImage({src: homeImage})
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="hero"
+    style={optimizedBg ? `background-image: url('${optimizedBg.src}');` : ''}
+    >
+        <Header />
+        <slot />
+    </div>
+    
+    <main>
+        <slot name="main-content" />
+    </main>
+    <Footer />
+
+</body>
+</html>
+
+<style>
+    .hero {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100vh;
+  }
+</style>
+

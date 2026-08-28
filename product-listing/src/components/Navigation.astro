@@ -1,0 +1,77 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<nav class="bg-nav">
+    <div class="flex">
+        
+        <h2>Liceria & Co</h2>
+
+        <div class="small-gap">
+            <a href="#"><Icon name="ant-design:user-outlined"/></a>
+            <a href="#"><Icon name="akar-icons:heart"/></a>
+            <a href="#"><Icon name="akar-icons:shopping-bag" /></a>
+            
+        </div>
+    </div>
+
+    <div class="menu">
+        <a href="./"><strong>Home</strong></a>
+        <a href="/jewellery"><strong>Jewellery</strong></a>
+        <a href="/bracelets"><strong>Bracelets</strong></a>
+        <a href="/earrings"><strong>Earrings</strong></a>
+        <a href="/necklaces"><strong>Necklaces</strong></a>
+        <a href="/rings"><strong>Rings</strong></a>
+        <a href="/watches"><strong>Watches</strong></a>
+    </div>
+</nav>
+
+<style>
+    .bg-nav {
+        padding: 2rem;
+        transition: background-color 1s ease-in-out;
+    }
+
+    div a {
+        text-decoration: none;
+        font-size: 1.3rem;
+        color: #f4f9e9
+    }
+
+    .bg-nav:hover{
+        background-color: #e7ecef;
+    }
+
+    .bg-nav:hover a {
+        color: #000000;
+    }
+
+    .bg-nav:hover h2 {
+        color: #000000;
+    }
+
+    .bg-nav:hover a:hover {
+        text-decoration: underline;
+    }
+    .flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .flex h2 {
+        font-size: 2rem;
+        color: #f4f9e9
+    }
+
+    .small-gap {
+        display: flex;
+        column-gap: 20px;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 20px;
+    }
+</style>

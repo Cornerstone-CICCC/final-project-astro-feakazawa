@@ -1,0 +1,59 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  imageSrc: ImageMetadata;
+  imageHover: ImageMetadata;
+  imageAlt: string;
+  link: string
+}
+
+const { title, imageSrc, imageHover, imageAlt, link } = Astro.props;
+---
+
+<div class="card">
+    <Image class="img-base" src={imageSrc} alt={imageAlt} width={350} height={350} />
+    <Image class="img-hover" src={imageHover} alt='' />
+    <h3>{title}</h3>
+    <a href={link}>Learn more</a>
+</div>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25rem;
+    position: relative;
+  }
+
+  .card h3 {
+    font-size: 1.5rem;
+  }
+
+  .card a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.2rem;
+  }
+
+  .card a:hover {
+    color: #ff8600;
+  }
+  
+  .img-hover {
+    position: absolute;
+    top: 0;
+    left: 25;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    width: 350px;
+    height: 350px;
+  }
+
+  .card:hover .img-hover {
+    opacity: 1;
+  }
+</style>

@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+
+
+//images
+import img1 from '../assets/silver-chain0.avif'
+import img2 from '../assets/silver-chain1.avif'
+import img3 from '../assets/silver-chain2.avif'
+import img4 from '../assets/silver-chain3.avif'
+import img5 from '../assets/silver-chain4.avif'
+---
+
+<div class="grid-media">
+    <Image src={img1} alt='Elegant silver necklace' width={400} height={400} />
+    <Image src={img2} alt='Elegant silver necklace' width={400} height={400} />
+    <Image src={img3} alt='Elegant silver necklace' width={400} height={400} />
+    <Image src={img4} alt='Elegant silver necklace' width={400} height={400} />
+    <Image src={img5} alt='Elegant silver necklace' width={400} height={400} />
+
+</div>
+
+<style>
+    .grid-media {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px
+    }
+</style>

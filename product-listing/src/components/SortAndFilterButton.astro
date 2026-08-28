@@ -1,0 +1,150 @@
+---
+import { ProductCatalog } from "../models/productCatalog";
+import  CardPrice  from "./CardPrice.astro";
+
+const catalog = new ProductCatalog()
+const necklaces = catalog.getProductsByCategory('necklaces')
+const rings = catalog.getProductsByCategory('rings')
+const earrings = catalog.getProductsByCategory('earrings')
+const bracelets = catalog.getProductsByCategory('bracelets')
+const jewellery = [... necklaces, ...rings, ...earrings, ...bracelets]
+
+---
+
+<div class="flex">
+    <div class="select-wrapper">
+        <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24">
+	        <path d="M0 0h24v24H0z" fill="none" />
+	        <g fill="none" stroke="currentColor" stroke-width="1.5">
+		    <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h3M3 17h6m9 0h3M15 7h6" />
+		    <path d="M6 7c0-.932 0-1.398.152-1.765a2 2 0 0 1 1.083-1.083C7.602 4 8.068 4 9 4s1.398 0 1.765.152a2 2 0 0 1 1.083 1.083C12 5.602 12 6.068 12 7s0 1.398-.152 1.765a2 2 0 0 1-1.083 1.083C10.398 10 9.932 10 9 10s-1.398 0-1.765-.152a2 2 0 0 1-1.083-1.083C6 8.398 6 7.932 6 7Zm6 10c0-.932 0-1.398.152-1.765a2 2 0 0 1 1.083-1.083C13.602 14 14.068 14 15 14s1.398 0 1.765.152a2 2 0 0 1 1.083 1.083C18 15.602 18 16.068 18 17s0 1.398-.152 1.765a2 2 0 0 1-1.083 1.083C16.398 20 15.932 20 15 20s-1.398 0-1.765-.152a2 2 0 0 1-1.083-1.083C12 18.398 12 17.932 12 17Z" />
+	        </g>
+        </svg>
+
+        <select id="filterCategory" class="format-select">
+            <option value="all">All Categories</option>
+            <option value="bracelets">Bracelets</option>
+            <option value="earrings">Earrings</option>
+            <option value="necklaces">Necklaces</option>
+            <option value="rings">Rings</option>
+        </select>
+    </div>
+    
+
+    <div class="select-wrapper">
+        <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24">
+	        <path d="M0 0h24v24H0z" fill="none" />
+	        <path fill="currentColor" d="M13.47 7.53a.75.75 0 0 0 1.06 0l.72-.72V17a.75.75 0 0 0 1.5 0V6.81l.72.72a.75.75 0 1 0 1.06-1.06l-2-2a.75.75 0 0 0-1.06 0l-2 2a.75.75 0 0 0 0 1.06m-4.72 9.66l.72-.72a.75.75 0 1 1 1.06 1.06l-2 2a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l.72.72V7a.75.75 0 0 1 1.5 0z" />
+        </svg>
+
+        <select id="sortPrice" class="format-select">
+            <option value="" disabled selected>Sort by</option>
+            <option value="lowest">Price (lowest first)</option>
+            <option value="highest">Price (highest first)</option>
+        </select>
+    </div>
+
+</div>
+
+
+<div id="cardContainer" class="grid3col paddingB5">
+    {jewellery.map((product) => (
+        <CardPrice
+            link={`/${product.category}/${product.slug}`}
+            imageSrc={product.image}
+            imageAlt={product.title}
+            title={product.title}
+            description={product.description}
+            price={`CAD ${product.price}`}
+            priceValue={product.price}
+            category={product.category}
+        />
+    ))}
+</div>
+
+<style>
+    .flex {
+        display: flex;
+        justify-content: end;
+        padding: 1rem 5rem;
+        column-gap: 10px;
+    }
+    .format-select {
+        width: 200px;
+        height: 50px;
+        text-align: center;
+        border-radius: 50px;
+        border: 1px solid #eae0d5
+    }
+
+    .select-wrapper {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .select-icon {
+        position: absolute;
+        left: 15px;
+        pointer-events: none;
+    }
+
+    .grid3col {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+    }
+
+    .marginT1 {
+        margin-top: 1rem;
+    }
+
+    .paddingB5 {
+        padding-bottom: 5rem;
+    }
+
+
+</style>
+
+<script>
+    const selectSort = document.getElementById('sortPrice') as HTMLSelectElement | null;
+    const selectCategory = document.getElementById('filterCategory') as HTMLSelectElement | null;
+    const container = document.getElementById('cardContainer') as HTMLElement | null;
+
+    // copy of ALL initial page cards
+    const allCards = container 
+        ? (Array.from(container.querySelectorAll('.card')) as HTMLElement[])
+        : [];
+
+    function updateCards() {
+        if (!container) return;
+
+        const selectedCategory = selectCategory?.value || 'all';
+        const selectedSort = selectSort?.value || '';
+
+        let filteredCards = allCards.filter(card => {
+        if (selectedCategory === 'all') return true;
+        return card.dataset.category === selectedCategory;
+        });
+
+    
+        if (selectedSort) {
+        filteredCards.sort((a, b) => {
+            const priceA = parseFloat(a.dataset.price || '0');
+            const priceB = parseFloat(b.dataset.price || '0');
+
+            return selectedSort === 'lowest' ? priceA - priceB : priceB - priceA;
+        });
+        }
+
+        // clean previous cards and upload new sorted/filterer cards
+        container.innerHTML = '';
+        filteredCards.forEach(card => container.appendChild(card));
+    }
+
+    selectCategory?.addEventListener('change', updateCards);
+    selectSort?.addEventListener('change', updateCards);
+</script>
+
