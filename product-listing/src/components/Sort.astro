@@ -1,0 +1,105 @@
+---
+import { ProductCatalog } from "../models/productCatalog";
+import  CardPrice  from "./CardPrice.astro";
+
+interface Props {
+    category: string
+}
+
+const {category} = Astro.props
+
+const catalog = new ProductCatalog()
+const targetProducts = catalog.getProductsByCategory(category)
+---
+<div class="flex">
+    <div class="select-wrapper">
+        <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path fill="currentColor" d="M13.47 7.53a.75.75 0 0 0 1.06 0l.72-.72V17a.75.75 0 0 0 1.5 0V6.81l.72.72a.75.75 0 1 0 1.06-1.06l-2-2a.75.75 0 0 0-1.06 0l-2 2a.75.75 0 0 0 0 1.06m-4.72 9.66l.72-.72a.75.75 0 1 1 1.06 1.06l-2 2a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l.72.72V7a.75.75 0 0 1 1.5 0z" />
+        </svg>
+
+        <select id="sortPrice" class="format-select">
+            <option value="" disabled selected>Sort by</option>
+            <option value="lowest">Price (lowest first)</option>
+            <option value="highest">Price (highest first)</option>
+        </select>
+    </div>
+</div>
+
+
+<div id="cardContainer" class="grid2col">
+    {targetProducts.map((product) => (
+        <CardPrice
+            link={`/${product.category}/${product.slug}`}
+            imageSrc={product.image}
+            imageAlt={product.title}
+            title={product.title}
+            description={product.description}
+            price={`CAD ${product.price}`}
+            priceValue={product.price}
+            category={product.category}
+        />
+    ))}
+</div>
+
+<style>
+    .flex {
+        display: flex;
+        justify-content: end;
+        padding: 1rem 5rem;
+        column-gap: 10px;
+    }
+
+    .select-wrapper {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .select-icon {
+        position: absolute;
+        left: 15px;
+        pointer-events: none; /* assure that clicking on icon, select will open */
+    }
+
+    .format-select {
+        width: 200px;
+        height: 50px;
+        text-align: center;
+        border-radius: 50px;
+        border: 1px solid #eae0d5
+    }
+
+    .grid2col {
+        display: grid;
+        grid-template-columns: repeat(2, 400px);
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+    }
+</style>
+
+<script>
+    const selectSort = document.getElementById('sortPrice') as HTMLSelectElement | null;
+    const container = document.getElementById('cardContainer') as HTMLElement | null;
+
+    selectSort?.addEventListener('change', () => {
+        if (!container) return;
+
+        const cards = Array.from(container.querySelectorAll('.card')) as HTMLElement[];
+        const order = selectSort.value;
+
+    
+        cards.sort((a, b) => {
+        const priceA = parseFloat(a.dataset.price || '0');
+        const priceB = parseFloat(b.dataset.price || '0');
+
+        return order === 'lowest' ? priceA - priceB : priceB - priceA;
+        });
+
+        // clean previous cards and upload new sorted cards
+        container.innerHTML = '';
+
+        cards.forEach(card => container.appendChild(card));
+  });
+</script>

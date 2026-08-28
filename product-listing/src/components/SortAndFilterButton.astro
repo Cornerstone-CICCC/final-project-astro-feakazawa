@@ -1,7 +1,6 @@
 ---
 import { ProductCatalog } from "../models/productCatalog";
 import  CardPrice  from "./CardPrice.astro";
-import { Icon } from "astro-icon/components";
 
 const catalog = new ProductCatalog()
 const necklaces = catalog.getProductsByCategory('necklaces')
@@ -14,7 +13,7 @@ const jewellery = [... necklaces, ...rings, ...earrings, ...bracelets]
 
 <div class="flex">
     <div class="select-wrapper">
-        <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+        <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24">
 	        <path d="M0 0h24v24H0z" fill="none" />
 	        <g fill="none" stroke="currentColor" stroke-width="1.5">
 		    <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h3M3 17h6m9 0h3M15 7h6" />
@@ -33,7 +32,7 @@ const jewellery = [... necklaces, ...rings, ...earrings, ...bracelets]
     
 
     <div class="select-wrapper">
-        <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+        <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24">
 	        <path d="M0 0h24v24H0z" fill="none" />
 	        <path fill="currentColor" d="M13.47 7.53a.75.75 0 0 0 1.06 0l.72-.72V17a.75.75 0 0 0 1.5 0V6.81l.72.72a.75.75 0 1 0 1.06-1.06l-2-2a.75.75 0 0 0-1.06 0l-2 2a.75.75 0 0 0 0 1.06m-4.72 9.66l.72-.72a.75.75 0 1 1 1.06 1.06l-2 2a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l.72.72V7a.75.75 0 0 1 1.5 0z" />
         </svg>
@@ -42,7 +41,7 @@ const jewellery = [... necklaces, ...rings, ...earrings, ...bracelets]
             <option value="" disabled selected>Sort by</option>
             <option value="lowest">Price (lowest first)</option>
             <option value="highest">Price (highest first)</option>
-    </select>
+        </select>
     </div>
 
 </div>
@@ -87,13 +86,14 @@ const jewellery = [... necklaces, ...rings, ...earrings, ...bracelets]
     .select-icon {
         position: absolute;
         left: 15px;
-        pointer-events: none; /* Garante que clicar no ícone abra o select */
+        pointer-events: none;
     }
 
     .grid3col {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         justify-content: center;
+        justify-items: center;
         align-items: center;
     }
 
