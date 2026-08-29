@@ -1,12 +1,3 @@
-Include a reflection.md file at the project root. A few short paragraphs covering:
-
-Which approach you chose for the product pages
-Why you chose it
-The benefit over the alternatives
-Any limitations or trade-offs
-The hosted link to your deployed site (see below)
-This is where we evaluate your understanding — be honest and specific.
-
 ## My reflections
 
 ### Which approach you chose for the product pages
@@ -28,3 +19,6 @@ My limitations are related to create the interactive features. It was hard to cr
 One initial difficult was the concept of slug. After I understand what it means and how it works, it was easier to implement the pages.
 
 Last but not least, my difficult was create a template for my grid images. I would like to have one template to be used in all my pages. In this template, it will upload all my images using the same key (for example, if key is "charm-bracelet", so it should upload all images with charm-bracelet1, charm-braceelt2 etc). But to do that, I'll need to use promises and we didn't learn about it. So I decided to create one GridLayout for each key. This will be a future improvement. Talking about future improvement, another one could be make this page responsive. At the moment, all pages were build for Desktop screen.
+
+## Deploy link
+https://inquisitive-entremet-abb6e8.netlify.app/
